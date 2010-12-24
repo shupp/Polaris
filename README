@@ -1,0 +1,21 @@
+A quick class map based autoloader solution.  Here's an example usage:
+
+# Generate the map ahead of time
+<?php
+require_once 'Polaris/ClassMapGenerator.php';
+
+$mapper = new Polaris_ClassMapGenerator();
+$string = $mapper->generateMap();
+$file   = fopen('map.txt', 'w+');
+fwrite($file, $string);
+flose($file);
+?>
+
+# Initialize autoloader in your app
+<?php
+
+require_once 'Polaris/Autoload.php';
+
+$autoload = new Polaris_Autoload('map.txt', __DIR__ . '/');
+spl_autoload_register(array($autoload, 'autoload'));
+?>
