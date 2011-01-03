@@ -8,7 +8,7 @@ $mapper = new Polaris_ClassMapGenerator();
 $string = $mapper->generateMap();
 $file   = fopen('map.txt', 'w+');
 fwrite($file, $string);
-flose($file);
+fclose($file);
 ?>
 
 # Initialize autoloader in your app
